@@ -4,10 +4,12 @@
     <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>CaotunSpring.C000</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.6</Version>
     <Authors>CaotunSpring</Authors>
     <Product>CaotunSpring C000 Components and Adapters</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Based on article, https://docs.microsoft.com/en-us/aspnet/core/blazor/blazor-server-ef-core?view=aspnetcore-5.0,
+</Description>
   </PropertyGroup>
 
   

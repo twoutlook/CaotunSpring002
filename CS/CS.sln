@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NS7Workbench", "NS7Workbenc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NS7V2", "NS7V2\NS7V2.csproj", "{69C446BA-FFD5-4DBC-9258-A73D772C6C2A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaotunSpringC000Components", "CaotunSpringC000Components\CaotunSpringC000Components.csproj", "{305B2C99-E05F-43B2-A41E-25DCB700C67B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaotunSpringC000", "CaotunSpringC000Components\CaotunSpringC000.csproj", "{305B2C99-E05F-43B2-A41E-25DCB700C67B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,12 +1,12 @@
 ﻿
 using CaotunSpring.C000.Adapter;
+using CaotunSpringC000.Components;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NS2.Data;
 using NS4.Models;
-using NS7V2.Components;
 using System;
 using System.Collections.Generic;
 using System.IO;

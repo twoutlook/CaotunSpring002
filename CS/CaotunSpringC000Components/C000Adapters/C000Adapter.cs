@@ -225,8 +225,7 @@ namespace CaotunSpring.C000.Adapter
                         strName = y.Substring(0, 8) + "__";
                     }
                     //f.FieldMappers.Add(new A000FieldMapper { Id = y, Name = "顯示" + y, Index = k2 });
-               //     f.FieldMappers.Add(new A000FieldMapper { Id = y, Name = strName, Index = k2 });
-                    f.FieldMappers.Add(new A000FieldMapper { Id = y, Name = strName, Index = k2,Ext="" });
+                    f.FieldMappers.Add(new A000FieldMapper { Id = y, Name = strName, Index = k2 });
                 }
                 WriteJson(PRE, ENT);
             }
