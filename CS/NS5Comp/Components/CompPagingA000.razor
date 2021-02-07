@@ -1,0 +1,55 @@
+﻿ <div style="margin-top:4px;margin-left:-16px">
+
+    <nav>
+        <ul class="pagination">
+            <li class="page-item">
+                <a disabled="@(Filters.Loading || !Filters.PageHelper.HasPrev)"
+                   class="btn btn-primary @IsDisabled(Filters.PageHelper.HasPrev)"
+                   href="@Filters.PageHelper.PrevPageStr">
+                    上一頁
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" style="align-items:baseline">
+                    &nbsp;&nbsp;【總筆數】@Filters.PageHelper.TotalItemCount&nbsp;&nbsp;<span style=" color: darkgrey;">
+
+                        @*【每頁筆數】@Filters.PageHelper.PageSize&nbsp;&nbsp*@
+                    </span>
+                    【頁次】@Filters.PageHelper.Page&nbsp;&nbsp;<span style=" color: darkgrey;">
+                        【總頁數】@Filters.PageHelper.PageCount&nbsp;&nbsp;
+                    </span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a disabled="@(Filters.Loading || !Filters.PageHelper.HasNext)"
+                   class="btn btn-primary @IsDisabled(Filters.PageHelper.HasNext)"
+                   href="@Filters.PageHelper.NextPageStr">
+                    下一頁
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+
+@code
+{
+    [Parameter]
+    public IFiltersA000 Filters { get; set; }
+
+    int StartRecNum;
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        StartRecNum = 1 + Filters.PageHelper.PageSize * (Filters.PageHelper.PageCount - 1);
+    }
+
+    void PageSizeChanged()
+    {
+        //
+    }
+
+    private string IsDisabled(bool condition) =>
+!Filters.Loading && condition ? "" : "disabled";
+}

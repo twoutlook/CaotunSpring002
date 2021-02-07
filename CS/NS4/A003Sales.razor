@@ -1,0 +1,30 @@
+﻿@page "/A003"
+@page "/A003/{Page:int}"
+
+
+<CompPageTitleA000 Title="@TITLE" />
+
+<WrapperA @ref="Wrapper" FilterChanged="ReloadAsync">
+    <div class="container-fluid contacts-grid">
+        <CompSearchA000 Filters="@QueryAdapter.f" />
+        @if (QueryAdapter.f.Loading || Items == null)
+        {
+            <div class="row">
+                <div class="col-12 alert alert-info">
+                    載入資料中...
+                </div>
+            </div>
+        }
+
+        @if (Items != null)
+        {
+            <CompTableA000 Filters="@QueryAdapter.f" Items="Items" />
+        }
+
+        @if (@QueryAdapter.f.PageHelper.PageCount > 1)
+        {
+            <CompPagingA000 Filters="@QueryAdapter.f" />
+        }
+    </div>
+</WrapperA>
+

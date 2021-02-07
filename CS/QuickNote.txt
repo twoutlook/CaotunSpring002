@@ -1,0 +1,4 @@
+https://docs.microsoft.com/en-us/aspnet/core/blazor/components/templated-components?view=aspnetcore-5.0
+
+
+https://github.com/dotnet/aspnetcore/issues/7268

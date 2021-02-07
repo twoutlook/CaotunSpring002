@@ -1,0 +1,160 @@
+﻿@page "/A001"
+@page "/A001/{Page:int}"
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@inject NavigationManager NavMgr
+
+@using System.Linq.Dynamic.Core
+
+@using Microsoft.EntityFrameworkCore.Infrastructure
+@inject IDbContextFactory<NS2Context> DbFactory
+@inject NavigationManager Nav
+@inject A001Adapter QueryAdapter
+@*@using DreamAITek.T001.Adapter*@
+<CompPageTitleA000 Title="@TITLE" />
+
+<WrapperA @ref="Wrapper" FilterChanged="ReloadAsync">
+    <div class="container-fluid contacts-grid">
+        <CompSearchA000 Filters="@QueryAdapter.f" />
+        @if (QueryAdapter.f.Loading || Items == null)
+        {
+            <div class="row">
+                <div class="col-12 alert alert-info">
+                    載入資料中...
+                </div>
+            </div>
+        }
+
+        @if (Items != null)
+        {
+            <CompTableA000 Filters="@QueryAdapter.f" Items="Items" />
+        }
+
+        @if (@QueryAdapter.f.PageHelper.PageCount > 1)
+        {
+            <CompPagingA000 Filters="@QueryAdapter.f" />
+        }
+    </div>
+</WrapperA>
+
+@code
+{
+    [Parameter]
+    public int Page // 原範例,已更換變量 //頁面上的分頁
+    {
+        get => QueryAdapter.f.PageHelper.Page;
+        set
+        {
+            QueryAdapter.f.PageHelper.Page = value;
+        }
+    }
+
+    private WrapperA Wrapper { get; set; } // 整個頁面的剛性骨架
+
+    private ICollection<Object> Objs { get; set; } // 技術梗,適時使用泛型
+
+    private List<Part> Items { get; set; } // 本頁面要顯示的內容     // === 要調整的地方 ===
+
+    private string IsDisabled(bool condition) => !QueryAdapter.f.Loading && condition ? "" : "disabled";// 原範例,已更換變量
+
+    private int _lastPage = -1;// 原範例,不動
+
+    protected override void OnAfterRender(bool firstRender) // 原範例,已調整導航
+    {
+        // Ensure we're on the same, er, right page.
+        if (_lastPage < 1)
+        {
+            Nav.NavigateTo(QueryAdapter.f.PageHelper.BaseUrl + "1");
+            return;
+        }
+
+        // Normalize the page values.
+        if (QueryAdapter.f.PageHelper.PageCount > 0)
+        {
+            if (Page < 1)
+            {
+                Nav.NavigateTo(QueryAdapter.f.PageHelper.BaseUrl + "1");
+                return;
+            }
+            if (Page > QueryAdapter.f.PageHelper.PageCount)
+            {
+                Nav.NavigateTo(QueryAdapter.f.PageHelper.BaseUrl + QueryAdapter.f.PageHelper.PageCount);
+                return;
+            }
+        }
+        base.OnAfterRender(firstRender);
+    }
+
+    protected async override Task OnParametersSetAsync() // 原範例,不動
+    {
+        // Make sure the page really chagned.
+        if (Page != _lastPage)
+        {
+            _lastPage = Page;
+            await ReloadAsync();
+        }
+        await base.OnParametersSetAsync();
+    }
+
+    private string TITLE = "物料";
+    private string PRE = "A001";
+    private string ENT = "Part";
+    private string TABLE_CONFIG;
+
+
+    private async Task ReloadAsync()
+    {
+        var qa = QueryAdapter;
+        var f = QueryAdapter.f;
+        var p = QueryAdapter.f.PageHelper;
+        var db = DbFactory.CreateDbContext();
+
+        if (f.Loading || Page < 1)
+        {
+            return;
+        }
+
+        f.Loading = true; // --- start
+        
+        string strWhere = qa.GetWhereString();
+        string strOrderBy = qa.GetSortString() + qa.GetSortString2();
+
+        p.TotalItemCount = await db.Part.Where(strWhere).CountAsync();
+        Items = db.Part.Where(strWhere).OrderBy(strOrderBy).Skip(p.Skip).Take(p.PageSize).ToList();
+        p.PageItems = Items.Count;
+
+        f.Loading = false;// --- end
+    }
+
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ReloadAsync();
+    }
+
+    protected override void OnInitialized()
+    {
+        TABLE_CONFIG = Configuration["TABLE_CONFIG"];
+        QueryAdapter.Start(typeof(Part), PRE, ENT, TABLE_CONFIG);
+
+        //1. 指定導航網址
+        //QueryAdapter.f.PageHelper.BaseUrl = "/" + PRE + "/";
+
+        ////2. 讀取欄位定義, 如果不存在,以標準模板建立使用
+        //Type type = typeof(Part); //注意模型還未放到指定的 namespace   // === 要調整的地方 ===
+        //PropertyInfo[] properties = type.GetProperties();
+        //QueryAdapter.ReadJson(type, PRE, ENT);
+
+        ////3. 設定默認排序    取第一個欄位, 正向排序
+        //QueryAdapter.defaultSortStr = QueryAdapter.f.FieldMappers[0].Id + "_1";
+
+        ////4. 設置篩選欄位, *** 要處理可篩選欄位不足 4 個 的情況
+        //QueryAdapter.UpdateFMapper(type);
+    }
+}
+
+
+

@@ -1,0 +1,27 @@
+
+
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<PackageId>CaotunSpring.C000.Adapter</PackageId>
+		<Authors>Mark Chenpingling</Authors>
+		<Product>CaotunSpring.C000.Adapter</Product>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="C000Adapters\Adapters\" />
+	</ItemGroup>
+
+</Project>

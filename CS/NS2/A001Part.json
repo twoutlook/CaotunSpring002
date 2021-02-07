@@ -1,0 +1,52 @@
+[
+  {
+    "Id": "Id",
+    "Name": "Id",
+    "Index": 10
+  },
+  {
+    "Id": "Code",
+    "Name": "Code",
+    "Index": 20
+  },
+  {
+    "Id": "Name",
+    "Name": "Name",
+    "Index": 30
+  },
+  {
+    "Id": "Brand",
+    "Name": "Brand",
+    "Index": 40
+  },
+  {
+    "Id": "Spec",
+    "Name": "Spec",
+    "Index": 50
+  },
+  {
+    "Id": "Uom",
+    "Name": "Uom",
+    "Index": 60
+  },
+  {
+    "Id": "UnitPrice",
+    "Name": "UnitPrice",
+    "Index": 70
+  },
+  {
+    "Id": "SupplierCode",
+    "Name": "Supplier__",
+    "Index": 80
+  },
+  {
+    "Id": "Category",
+    "Name": "Category",
+    "Index": 90
+  },
+  {
+    "Id": "Remarks",
+    "Name": "Remarks",
+    "Index": 100
+  }
+]

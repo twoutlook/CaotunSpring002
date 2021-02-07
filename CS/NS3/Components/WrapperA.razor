@@ -1,0 +1,33 @@
+﻿<CascadingValue Value="this" IsFixed="true">
+    @ChildContent
+</CascadingValue>
+
+@code {
+    /// <summary>
+    /// Renders whatever is inside the tags and cascades a copy of itself.
+    /// </summary>
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    /// <summary>
+    /// Call when the filter has changed to refresh the <see cref="Contact"/>
+    /// list.
+    /// </summary>
+    [Parameter]
+    public EventCallback FilterChanged { get; set; }
+
+
+    [Parameter]
+    public EventCallback ToWrite { get; set; }
+
+    /// <summary>
+    /// Call when a contact is requested to be deleted.
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> DeleteRequested { get; set; }
+
+    /// <summary>
+    /// The id of the <see cref="Contact"/> to be deleted.
+    /// </summary>
+    public string DeleteRequestId { get; set; }
+}

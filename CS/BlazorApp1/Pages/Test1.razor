@@ -1,0 +1,37 @@
+﻿@page "/Test1"
+
+
+
+<h1>測試登入和角色</h1>
+https://www.youtube.com/watch?v=hhOwmLsIEKc
+
+
+https://christianfindlay.com/2020/07/09/blazor-vs-traditional-web-apps/
+
+
+<hr />
+<AuthorizeView>
+    <Authorized>
+        用戶已登入
+
+        是否為Admin? @context.User.IsInRole("Admin")
+
+        <br />
+
+    </Authorized>
+    <NotAuthorized>
+        用戶尚未登入
+    </NotAuthorized>
+</AuthorizeView>
+
+<hr />
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        Admin 已登入
+    </Authorized>
+    <NotAuthorized>
+        Admin 尚未登入
+    </NotAuthorized>
+</AuthorizeView>
+
+<hr />

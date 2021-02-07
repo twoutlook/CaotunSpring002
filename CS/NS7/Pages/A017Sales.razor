@@ -1,0 +1,15 @@
+﻿@page "/A017"
+@page "/A017/{Page:int}"
+
+@inherits A017SalesBase
+
+
+
+<WrapperV7 @ref="Wrapper" FilterChanged="ReloadAsync" TITLE="@TITLE" Adapter="Adapter"
+           PageHelper="PageHelper">
+
+
+    <TableCompV7 Adapter="Adapter"  Items="Items" PageHelper="PageHelper" />
+
+</WrapperV7>
+

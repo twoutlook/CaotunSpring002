@@ -1,0 +1,52 @@
+[
+  {
+    "Id": "Id",
+    "Name": "Id",
+    "Index": 10
+  },
+  {
+    "Id": "SalesNum",
+    "Name": "SalesNum",
+    "Index": 20
+  },
+  {
+    "Id": "SalesDate",
+    "Name": "SalesDate",
+    "Index": 30
+  },
+  {
+    "Id": "PartNum",
+    "Name": "PartNum",
+    "Index": 40
+  },
+  {
+    "Id": "Qty",
+    "Name": "Qty",
+    "Index": 50
+  },
+  {
+    "Id": "UnitPrice",
+    "Name": "UnitPrice",
+    "Index": 60
+  },
+  {
+    "Id": "SubTotal",
+    "Name": "SubTotal",
+    "Index": 70
+  },
+  {
+    "Id": "Currency",
+    "Name": "Currency",
+    "Index": 80
+  },
+  {
+    "Id": "CustomerCode",
+    "Name": "Customer__",
+    "Index": 90
+  },
+  {
+    "Id": "FromWH",
+    "Name": "FromWH",
+    "Index": 100
+  }
+]

@@ -1,0 +1,107 @@
+﻿@page
+@model NS.Pages.PartListModel
+
+@{
+    ViewData["Title"] = "PartList";
+}
+
+<h1>PartList</h1>
+<style>
+    table.gridtable {
+        font-family: verdana, arial, sans-serif;
+        /*font-size: 102%;*/
+        font-size: 92%;
+        /*color:#333333;*/
+        color: black;
+        border-width: 1px;
+        /*border-color: #666666;*/
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+
+        table.gridtable th {
+            text-align: center;
+            align-content: center;
+            align-items: center;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            /*border-color: #666666;*/
+            border-color: #666666;
+            background-color: #dedede;
+        }
+
+        table.gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            /*border-color: #666666;*/
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+
+</style>
+
+<table class="gridtable">
+    <thead>
+        <tr>
+            <th>
+                产品编码
+            </th>
+            <th>
+                产品名称
+            </th>
+            <th>
+                品牌
+            </th>
+            <th>
+                规格型号
+            </th>
+            <th>
+                单位
+            </th>
+            <th>
+                单价
+            </th>
+            <th>
+                供应商
+            </th>
+            <th>
+                类别
+            </th>
+         
+  
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Part) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Spec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UOM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+        
+        </tr>
+}
+    </tbody>
+</table>

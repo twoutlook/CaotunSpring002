@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>DreamAITek.T001.Adapter</PackageId>
+    <Version>1.1.0</Version>
+    <Authors>Mark Chenpingling</Authors>
+    <Product>T001.Adapter</Product>
+    <Description>Adapter for general Filtering, Sorting and Paging usage</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+	</ItemGroup>
+</Project>
