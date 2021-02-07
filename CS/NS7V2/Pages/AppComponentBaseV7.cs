@@ -50,7 +50,7 @@ namespace CaotunSpring.C000
 
         [Parameter]
 
-        public int Page // 原範例,已更換變量 //頁面上的分頁
+        public int Page // Page Number
         {
             get
             {
@@ -199,10 +199,10 @@ namespace CaotunSpring.C000
             //https://stackoverflow.com/questions/9065598/if-a-folder-does-not-exist-create-it
             Directory.CreateDirectory(TABLE_CONFIG);
 
-            if (Configuration["TABLE_CONFIG"]!=null || Configuration["TABLE_CONFIG"]!= "")
-            {
-                TABLE_CONFIG = Configuration["TABLE_CONFIG"];
-            }
+            //if (Configuration["TABLE_CONFIG"]!=null || Configuration["TABLE_CONFIG"]!= "")
+            //{
+            //    TABLE_CONFIG = Configuration["TABLE_CONFIG"];
+            //}
            
 
 

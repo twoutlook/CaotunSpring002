@@ -14,6 +14,7 @@ namespace CaotunSpring.C000.Adapter
             Id = id;
             Name = name;
             Index = -1;
+            Ext = "";
         }
         public string Id { get; set; }
         public string Name { get; set; }
