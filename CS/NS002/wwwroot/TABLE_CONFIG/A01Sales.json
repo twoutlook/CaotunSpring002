@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "Id": "Id",
     "Name": "Id",
@@ -49,13 +49,13 @@
   },
   {
     "Id": "CustomerCode",
-    "Name": "Customer__",
+    "Name": "客戶",
     "Index": 90,
     "Ext": null
   },
   {
     "Id": "FromWh",
-    "Name": "FromWh",
+    "Name": "出貨倉",
     "Index": 100,
     "Ext": null
   }

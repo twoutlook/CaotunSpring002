@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<Authors>CaotunSpring</Authors>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Description>For NS project demo</Description>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://github.com/caotunspring/caotunspring</PackageProjectUrl>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+	</ItemGroup>
+</Project>

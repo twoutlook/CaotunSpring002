@@ -1,61 +1,61 @@
-[
+﻿[
   {
     "Id": "Id",
     "Name": "Id",
-    "Index": 10,
+    "Index": -10,
     "Ext": null
   },
   {
-    "Id": "SalesNum",
-    "Name": "SalesNum",
+    "Id": "Code",
+    "Name": "料號",
     "Index": 20,
     "Ext": null
   },
   {
-    "Id": "SalesDate",
-    "Name": "SalesDate",
+    "Id": "Name",
+    "Name": "品名",
     "Index": 30,
     "Ext": null
   },
   {
-    "Id": "PartNum",
-    "Name": "PartNum",
+    "Id": "Brand",
+    "Name": "Brand",
     "Index": 40,
     "Ext": null
   },
   {
-    "Id": "Qty",
-    "Name": "Qty",
+    "Id": "Spec",
+    "Name": "Spec",
     "Index": 50,
+    "Ext": null
+  },
+  {
+    "Id": "Uom",
+    "Name": "Uom",
+    "Index": 60,
     "Ext": null
   },
   {
     "Id": "UnitPrice",
     "Name": "UnitPrice",
-    "Index": 60,
-    "Ext": null
-  },
-  {
-    "Id": "SubTotal",
-    "Name": "SubTotal",
     "Index": 70,
     "Ext": null
   },
   {
-    "Id": "Currency",
-    "Name": "Currency",
+    "Id": "SupplierCode",
+    "Name": "Supplier__",
     "Index": 80,
     "Ext": null
   },
   {
-    "Id": "CustomerCode",
-    "Name": "Customer__",
+    "Id": "Category",
+    "Name": "Category",
     "Index": 90,
     "Ext": null
   },
   {
-    "Id": "FromWh",
-    "Name": "FromWh",
+    "Id": "Remarks",
+    "Name": "Remarks",
     "Index": 100,
     "Ext": null
   }
