@@ -1,18 +1,18 @@
 ﻿
+using CaotunSpring.C000.Adapter;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NS2.Data;
-//using Ca CS7Comps.Components;
-//using CaotunSpringC000Components.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CaotunSpring.C000.Adapter;
-using System.Linq.Dynamic.Core;
 using NS4.Models;
 using NS7V2.Components;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Threading.Tasks;
 
 namespace CaotunSpring.C000
 {
@@ -22,11 +22,12 @@ namespace CaotunSpring.C000
     // 共有的, 先做在這裡
     public class AppComponentBaseV7 : ComponentBase
     {
+        [Inject] // 和 Startup.ConfigureServices 呼應
+        public IDbContextFactory<NS2Context> DbFactory { get; set; }
+     
         [Inject]
         public IConfiguration Configuration { get; set; }
 
-        [Inject]
-        public IDbContextFactory<NS2Context> DbFactory { get; set; }
         [Inject]
         public NavigationManager Nav { get; set; }
 
@@ -34,6 +35,17 @@ namespace CaotunSpring.C000
 
         [Inject]
         public IPageHelperV7 PageHelper { get; set; }
+
+        [Inject]
+        public IWebHostEnvironment _webHostEnvironment { get; set; }
+
+        //private readonly IWebHostEnvironment _webHostEnvironment;
+
+        //public HomeController(
+        //    IWebHostEnvironment webHostEnvironment)
+        //{
+        //    _webHostEnvironment = webHostEnvironment;
+        //}
 
 
         [Parameter]
@@ -49,6 +61,15 @@ namespace CaotunSpring.C000
                 PageHelper.Page = value;
             }
         }
+
+
+      //  string rootPath = _webHostEnvironment.WebRootPath
+
+
+        // 本地 Item List, 存放本頁面要顯示的內容, 
+        // 經過實驗, 使用 Object List
+        // 如果使用 Entity Type, 像List<Sales>, 就不能封裝到這個 Base
+        public List<Object> Items { get; set; }
 
         public async Task<List<Object>> GetItemsAsync(string ENT, IAdapterV7 a)
         {
@@ -168,8 +189,22 @@ namespace CaotunSpring.C000
             TITLE = "" + this.GetType().Name.Substring(4).ToUpper();
 
             //   TITLE = "銷售";
-            TABLE_CONFIG = Configuration["TABLE_CONFIG"];
-            //   QueryAdapter.Start(typeof(Part), PRE, ENT, TABLE_CONFIG);
+
+           
+            //   string rootPath = _webHostEnvironment.WebRootPath;
+            //   string[] paths = { @"d:\archives", "2001", "media", "images" };
+            //https://docs.microsoft.com/en-us/dotnet/api/system.io.path.altdirectoryseparatorchar?view=net-5.0
+            TABLE_CONFIG = Path.Combine(_webHostEnvironment.WebRootPath, "TABLE_CONFIG/");
+
+            //https://stackoverflow.com/questions/9065598/if-a-folder-does-not-exist-create-it
+            Directory.CreateDirectory(TABLE_CONFIG);
+
+            if (Configuration["TABLE_CONFIG"]!=null || Configuration["TABLE_CONFIG"]!= "")
+            {
+                TABLE_CONFIG = Configuration["TABLE_CONFIG"];
+            }
+           
+
 
         }
     }

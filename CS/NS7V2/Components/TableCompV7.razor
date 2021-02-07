@@ -1,4 +1,4 @@
-﻿@*@typeparam TItem*@
+﻿@typeparam TItem
 @using System.Reflection
 
 <style>
@@ -254,7 +254,7 @@
     private IFiltersV7 Filters { get => Adapter.GetFilter(); }
 
     [Parameter]
-    public List<Object> Items { get; set; }
+    public List<TItem> Items { get; set; }
 
 
     [Parameter]
