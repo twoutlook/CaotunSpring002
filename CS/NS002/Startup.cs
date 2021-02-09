@@ -48,8 +48,9 @@ namespace NS002
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
-      
+
             services.AddScoped<IPageHelperV7, PageHelperV7>();
+            services.AddScoped<IFiltersV7, FiltersV7>();
 
             services.AddScoped<A00Adapter>();
             services.AddScoped<A01Adapter>();
