@@ -185,15 +185,15 @@
                                 }
 
                                 @*if (x.Id == "SalesDate")
-                    {
-                        <td> @DateTime.ParseExact(@item.GetType().GetProperty(@x.Id).GetValue(item).ToString().Split(" ")[0], "yyyy/m/d", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd")</td>
+                                    {
+                                        <td> @DateTime.ParseExact(@item.GetType().GetProperty(@x.Id).GetValue(item).ToString().Split(" ")[0], "yyyy/m/d", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd")</td>
 
-                    }
-                    else
-                    {
-                        <td> @item.GetType().GetProperty(@x.Id).GetValue(item)</td>
+                                    }
+                                    else
+                                    {
+                                        <td> @item.GetType().GetProperty(@x.Id).GetValue(item)</td>
 
-                    }*@
+                                    }*@
                             }
 
                         </tr>
@@ -243,7 +243,7 @@
 </div>
 
 
-@code { //https://www.youtube.com/watch?v=jsWVIV5ykQM
+@code {     //https://www.youtube.com/watch?v=jsWVIV5ykQM
 
     public string TBody { get => GetTBody(); }
     public string GetTBody()
@@ -253,24 +253,51 @@
         //  sb.Append("<tr><th>xxxxxx  1.0.1 override</th></tr>");
 
         int cnt = 1;
+        int startSEQ = PageHelper.PageSize * (PageHelper.Page - 1);
         foreach (var item in Items)
         {
-            RecNum = RecNum + 1;
+            // RecNum = RecNum + 1;
             sb.Append("<tr>");
             //            sb.Append(String.Format("<th>{0}</td>", (RecNum + cnt)));
             sb.Append("<th>");
-            sb.Append(RecNum + cnt);
+            sb.Append(startSEQ + cnt);
             cnt++;
             sb.Append("</th>");
 
             sb.Append("</tr>");
+
+            foreach (var x in Filters.FieldMappers)
+            {
+                var ext = x.Ext == null ? "" : x.Ext;
+                var val = item.GetType().GetProperty(@x.Id).GetValue(item);
+                switch (ext)
+                {
+                    case "yyyy-MM-dd":
+                        sb.Append("<td style=\"text - align:center\">");
+                        var y = @DateTime.ParseExact(item.GetType().GetProperty(x.Id).GetValue(item).ToString().Split(" ")[0], "yyyy/m/d", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+
+
+                        sb.Append(y);
+
+                        sb.Append("</td>");
+                        break;
+
+
+                    default:
+                        sb.Append("<td>");
+                        sb.Append(val);
+                        sb.Append("</td>");
+
+                        break;
+
+                }
+            }
+
+
         }
-
-
         return sb.ToString();
+
     }
-
-
 
 
     [Parameter]
