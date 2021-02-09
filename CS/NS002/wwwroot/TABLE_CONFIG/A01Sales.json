@@ -15,7 +15,7 @@
     "Id": "SalesDate",
     "Name": "SalesDate",
     "Index": 30,
-    "Ext": null
+    "Ext": "MM/dd"
   },
   {
     "Id": "PartNum",

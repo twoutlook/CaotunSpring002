@@ -5,7 +5,7 @@
   </PropertyGroup>
 	<ItemGroup>
 		<!--<PackageReference Include="CaotunSpring.C000" Version="1.0.4" />-->
-		<PackageReference Include="CaotunSpring002" Version="1.0.5" />
+		<PackageReference Include="CaotunSpring002" Version="1.0.7" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

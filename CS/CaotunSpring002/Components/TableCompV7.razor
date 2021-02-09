@@ -264,7 +264,6 @@
             cnt++;
             sb.Append("</th>");
 
-            sb.Append("</tr>");
 
             foreach (var x in Filters.FieldMappers)
             {
@@ -274,7 +273,11 @@
                 {
                     case "yyyy-MM-dd":
                         sb.Append("<td style=\"text - align:center\">");
-                        var y = @DateTime.ParseExact(item.GetType().GetProperty(x.Id).GetValue(item).ToString().Split(" ")[0], "yyyy/m/d", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                        // WATCHING, 解析日期要注意
+                        // 目前是針對 2021/1/19 0:00:00
+                        // 先取前半段,再以 "yyyy/m/d"解析
+                        // 獲得的 DateTime 再以 ToString("yyyy-MM-dd")
+                        var y = DateTime.ParseExact(item.GetType().GetProperty(x.Id).GetValue(item).ToString().Split(" ")[0], "yyyy/m/d", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
 
 
                         sb.Append(y);
@@ -282,6 +285,20 @@
                         sb.Append("</td>");
                         break;
 
+    
+                    case "MM/dd": // caseMMdd
+                        sb.Append("<td style=\"text - align:center\">");
+                        // WATCHING, 解析日期要注意
+                        // 目前是針對 2021/1/19 0:00:00
+                        // 先取前半段,再以 "yyyy/m/d"解析
+                        // 獲得的 DateTime 再以 ToString("yyyy-MM-dd")
+                        var caseMMdd = DateTime.ParseExact(item.GetType().GetProperty(x.Id).GetValue(item).ToString().Split(" ")[0], "yyyy/m/d", CultureInfo.InvariantCulture).ToString("MM/dd");
+
+
+                        sb.Append(caseMMdd);
+
+                        sb.Append("</td>");
+                        break;
 
                     default:
                         sb.Append("<td>");
@@ -292,6 +309,7 @@
 
                 }
             }
+            sb.Append("</tr>");
 
 
         }
