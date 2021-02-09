@@ -17,8 +17,8 @@
     @code {
 
 
-        [Parameter]
-        public List<Object> Items { get; set; }
+        //[Parameter]
+        //public List<Object> Items { get; set; }
 
         [Parameter]
         public IAdapterV7 Adapter { get; set; }
@@ -52,8 +52,8 @@
         /// <summary>
         /// Call when a contact is requested to be deleted.
         /// </summary>
-        [Parameter]
-        public EventCallback<string> DeleteRequested { get; set; }
+        //[Parameter]
+        //public EventCallback<string> DeleteRequested { get; set; }
 
         [Parameter]
         public string TITLE { get; set; }
@@ -62,5 +62,5 @@
         /// <summary>
         /// The id of the <see cref="Contact"/> to be deleted.
         /// </summary>
-        public string DeleteRequestId { get; set; }
+        //public string DeleteRequestId { get; set; }
     }

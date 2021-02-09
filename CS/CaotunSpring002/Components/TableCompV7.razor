@@ -55,17 +55,21 @@
 
             <table class="gridtable">
                 <tr>
+                    <th>Index</th>
                     <th>**原始名稱</th>
                     <th>自定義顯示</th>
+                    <th>Ext</th>
                 </tr>
 
                 @foreach (var x in Filters.FieldMappers)
                 {
 
-                    <tr>
-                        <th>@x.Id</th>
-                        <td>@x.Name</td>
-                    </tr>
+            <tr>
+                <td>@x.Index</td>
+                <th>@x.Id</th>
+                <td>@x.Name</td>
+                <td>@x.Ext</td>
+            </tr>
 
                 }
 
