@@ -253,10 +253,11 @@ namespace CaotunSpring002.Adapter
                 // NOTE by Mark, 2021-01-23
                 // 不知為何, 會殘留上個頁面的值?
                 // 在這裡, 再強制一
-                defaultSortStr = f.FieldMappers[0].Id + "_1";
+                // defaultSortStr = f.FieldMappers[0].Id + "_1"; // TODO defaultSortStr 已經不再使用了!?
 
-                f.SortStr = defaultSortStr;
+                //f.SortStr = defaultSortStr;
 
+                f.SortStr = f.FieldMappers[0].Id + "_1";
 
             }
             string[] str = f.SortStr.Split('_');
