@@ -17,6 +17,8 @@ namespace CaotunSpring002.Adapter
 
         private int MAX_ITEM_COL_CNT = 12;
         private int FIX_FITER_CNT = 8;// 這是指在 search, 最上兩個ROW, 各有 4 個 text filter control
+        //private int FIX_FITER_CNT = 4;// Testing for 4, SearchCompV7 會報錯
+
         public IFiltersV7 f;
 
         public bool IsLoading { get; set; }
@@ -24,7 +26,11 @@ namespace CaotunSpring002.Adapter
         public string defaultSortStr;
 
 
-
+        /**
+         * 自動生成最多八個篩選的文本框
+         * 按順序選其類型為 String
+         * 當不足8個時有做處理
+         */
         public void UpdateFMapper(Type type)
         {
             f.FMapper = new List<int>(); //WATCH , by Mark, 2021-02-02
@@ -47,11 +53,8 @@ namespace CaotunSpring002.Adapter
                             //QueryAdapter.f.FMapper.Add(k);
                             f.FMapper.Add(k);
                             f.FILTER_FILED_CNT++;
-
                         }
-
                     }
-
                 }
                 k++;
             }
@@ -63,19 +66,12 @@ namespace CaotunSpring002.Adapter
             {
                 f.FMapper.Add(-1);
             }
-
         }
 
-        //https://stackoverflow.com/questions/21533506/find-a-specified-generic-dbset-in-a-dbcontext-dynamically-when-i-have-an-entity
-        //var type = context.Model.FindEntityType(ENT);
-
-
-  
-
-         public void Init(string PRE, Type type, string TABLE_CONFIG)
+        public void Init(string PRE, Type type, string TABLE_CONFIG)
         {
             // === 1. 設定 ===
-         //   PRE = pre;
+            //   PRE = pre;
             TABLE_CONFIG_ROOT = TABLE_CONFIG;
 
             // === 2. 讀取調試的 JSON 檔案  

@@ -4,10 +4,10 @@
 		<TargetFramework>net5.0</TargetFramework>
 		<Authors>CaotunSpring</Authors>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Description>For NS project demo</Description>
+		<Description>For NS project demo. Search filtering must be 8 or less. </Description>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageProjectUrl>https://github.com/caotunspring/caotunspring</PackageProjectUrl>
-		<Version>1.1.5</Version>
+		<Version>1.1.7</Version>
 	</PropertyGroup>
 
 
