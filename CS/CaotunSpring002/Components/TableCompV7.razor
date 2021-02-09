@@ -196,7 +196,94 @@
 
 @code {     //https://www.youtube.com/watch?v=jsWVIV5ykQM
 
-    public string TBody { get => GetTBody(); }
+    public string TBody { get => GetTBodyV2(getStyleTr); }
+
+    public delegate String myMethodDelegate(TItem ti,IFiltersV7 f7);
+
+    public string getStyleTr(TItem tItem, IFiltersV7 f7)
+    {
+        StringBuilder sb = new();
+      //  sb.Append("<th>XXX</th>");
+        foreach (var x in f7.FieldMappers)
+        {
+            var ext = x.Ext == null ? "" : x.Ext;
+            var val = tItem.GetType().GetProperty(x.Id).GetValue(tItem);
+            switch (ext)
+            {
+                case "yyyy-MM-dd":
+                    sb.Append("<td style=\"text-align:center\">");
+                    // WATCHING, 解析日期要注意
+                    // 目前是針對 2021/1/19 0:00:00
+                    // 先取前半段,再以 "yyyy/m/d"解析
+                    // 獲得的 DateTime 再以 ToString("yyyy-MM-dd")
+                    var y = DateTime.ParseExact(tItem.GetType().GetProperty(x.Id).GetValue(tItem).ToString().Split(" ")[0], "yyyy/m/d", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+
+
+                    sb.Append(y);
+
+                    sb.Append("</td>");
+                    break;
+
+
+                case "MM/dd": // caseMMdd
+                    sb.Append("<td style=\"text-align:center\">");
+                    // WATCHING, 解析日期要注意
+                    // 目前是針對 2021/1/19 0:00:00
+                    // 先取前半段,再以 "yyyy/m/d"解析
+                    // 獲得的 DateTime 再以 ToString("yyyy-MM-dd")
+                    var caseMMdd = DateTime.ParseExact(tItem.GetType().GetProperty(x.Id).GetValue(tItem).ToString().Split(" ")[0], "yyyy/m/d", CultureInfo.InvariantCulture).ToString("MM/dd");
+
+
+                    sb.Append(caseMMdd);
+
+                    sb.Append("</td>");
+                    break;
+
+                case "decimal2": //
+                    sb.Append("<td style=\"text-align:right\">");
+                    sb.Append(String.Format("{0:#,##0.00}", val));
+                    sb.Append("</td>");
+                    break;
+                case "number": //
+                    sb.Append("<td style=\"text-align:right\">");
+                    sb.Append(val);
+                    sb.Append("</td>");
+                    break;
+
+                default:
+                    sb.Append("<td>");
+                    sb.Append(val);
+                    sb.Append("</td>");
+
+                    break;
+
+            }
+        }
+        //   sb.Append("</tr>");
+
+        return sb.ToString();
+    }
+
+    public string GetTBodyV2(myMethodDelegate del)
+    {
+        StringBuilder sb = new();
+        //  sb.Append("<tr><th>xxxxxx  1.0.1 override</th></tr>");
+
+        int cnt = 1;
+        int startSEQ = PageHelper.PageSize * (PageHelper.Page - 1);
+        foreach (var item in Items)
+        {
+            sb.Append("<tr>");
+            //            sb.Append(String.Format("<th>{0}</td>", (RecNum + cnt)));
+            sb.Append("<th>");
+            sb.Append(startSEQ + cnt);
+            cnt++;
+            sb.Append("</th>");
+            sb.Append(del(item, Filters));
+        }
+        return sb.ToString();
+
+    }
     public string GetTBody()
     {
         //https://stackoverflow.com/questions/50604366/is-there-an-equivalent-to-html-raw-in-blazor

@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NS7Workbench", "NS7Workbenc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NS7V2", "NS7V2\NS7V2.csproj", "{69C446BA-FFD5-4DBC-9258-A73D772C6C2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaotunSpring002", "CaotunSpring002\CaotunSpring002.csproj", "{AC93D014-DFD4-464D-A6C4-D89A32F8546D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaotunSpring002", "CaotunSpring002\CaotunSpring002.csproj", "{AC93D014-DFD4-464D-A6C4-D89A32F8546D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NS002", "NS002\NS002.csproj", "{CF3B1015-35D6-4B82-9FFA-15E519978915}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NS002", "NS002\NS002.csproj", "{CF3B1015-35D6-4B82-9FFA-15E519978915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp2", "BlazorApp2\BlazorApp2.csproj", "{ABE0B617-B6CA-4AFC-A12F-5A00C19D63AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CF3B1015-35D6-4B82-9FFA-15E519978915}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF3B1015-35D6-4B82-9FFA-15E519978915}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF3B1015-35D6-4B82-9FFA-15E519978915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABE0B617-B6CA-4AFC-A12F-5A00C19D63AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE0B617-B6CA-4AFC-A12F-5A00C19D63AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE0B617-B6CA-4AFC-A12F-5A00C19D63AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE0B617-B6CA-4AFC-A12F-5A00C19D63AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
