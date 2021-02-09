@@ -27,19 +27,19 @@
     "Id": "Qty",
     "Name": "Qty",
     "Index": 50,
-    "Ext": null
+    "Ext": "number"
   },
   {
     "Id": "UnitPrice",
     "Name": "UnitPrice",
     "Index": 60,
-    "Ext": null
+    "Ext": "decimal2"
   },
   {
     "Id": "SubTotal",
     "Name": "SubTotal",
     "Index": 70,
-    "Ext": null
+    "Ext": "decimal2"
   },
   {
     "Id": "Currency",
